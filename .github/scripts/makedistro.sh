@@ -68,9 +68,5 @@ sudo tar --exclude var -zcvf ../squashed-lowcarb.tar.gz ./*
 
 cd ../.. || exit
 sudo rm -rf distro/work
-cd distro || exit
-sudo rm -f ubuntu-local-latest-*
-split -b 20000000 ubuntu-focal-latest.tar.gz ubuntu-focal-latest-
-cd .. || exit
-sudo rm -f distro/ubuntu-focal-latest.tar.gz
+
 
