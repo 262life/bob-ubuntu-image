@@ -1,12 +1,5 @@
 #!/bin/sh 
 
-cd distro || exit
-
-if [ ! -f ubuntu-focal-latest.tar.gz ];then
-  cat ubuntu-focal-latest-* > ubuntu-focal-latest.tar.gz
-fi
-
-cd .. || exit
 
 sudo rm -rf distro/work 2>/dev/null
 sudo mkdir distro/work

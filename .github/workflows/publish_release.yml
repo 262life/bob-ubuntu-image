@@ -34,7 +34,7 @@ jobs:
           bash -c "chmod 755 .github/scripts/makedistro.sh; .github/scripts/makedistro.sh"
                    bash -c "chmod 755 .github/scripts/update_readme.sh; .github/scripts/update_readme.sh"
  
-      - name: push
+      - name: Push Artifacts
         uses: github-actions-x/commit@v2.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -44,7 +44,7 @@ jobs:
           files: README.md VERSION
           name: rsliotta
           email: bob@bobdot.me
-      - name: Release
+      - name: Publish Release and Artifacts
         uses: docker://antonyurchenko/git-release:latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,4 +55,4 @@ jobs:
           ALLOW_TAG_PREFIX: "true"
         with:
           args: |
-            distro/*.tgz
+            distro/*.tar.gz
