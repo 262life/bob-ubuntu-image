@@ -14,4 +14,5 @@ ubuntu-bob-image is an open source base binary image to build from-scratch docke
 ![Twitter Follow](https://img.shields.io/twitter/follow/BobDotMe?style=social)
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/BobDotMe/bob)
 [![Develop on Okteto](https://img.shields.io/badge/Okteto-Kubernetes%20for%20Developers-brightgreen?logo=apache-echarts)](https://cloud.okteto.com/deploy)
+[![Known Vulnerabilities](https://snyk.io/package/npm/snyk/badge.svg)](https://snyk.io/package/npm/snyk)
 
