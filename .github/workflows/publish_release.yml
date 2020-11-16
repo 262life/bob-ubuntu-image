@@ -25,23 +25,6 @@ jobs:
             echo "RELEASE_PRE=false" >> $GITHUB_ENV
             echo "RELEASE_LATEST=true" >> $GITHUB_ENV
           fi
-      - name: Create Plugins
-        run: |
-          bash -c "chmod 755 .github/scripts/plugins.sh; .github/scripts/plugins.sh"
-          bash -c "cd plugins/kubectl;  tar zcvf ../../bob-plugins-${{ env.RELEASE_VERSION }}.tgz *; cd ../.."
-      - name: Prebuild
-        run: |
-          bash -c "ls distro/ubuntu-focal-latest-* 2>/dev/null; if [ $? = 0 ]; then rm -f distro/ubuntu-focal-latest-* ;fi; touch distro/ubuntu-focal-latest-semiphore"
-      - name: Prepush
-        uses: github-actions-x/commit@v2.6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-branch: 'master'
-          commit-message: 'publish'
-          force-add: 'false'
-          files: distro/ubuntu-focal-latest-*
-          name: rsliotta
-          email: bob@bobdot.me
       - name: Build Action
         env: # Or as an environment variable
             docker_login: ${{ secrets.DOCKER_ID }}
@@ -50,41 +33,8 @@ jobs:
           bash -c "chmod 755 files/*; chmod 644 files/*.conf files/README"
           bash -c "chmod 755 .github/scripts/build_scratch_image.sh; .github/scripts/build_scratch_image.sh"
           bash -c "chmod 755 .github/scripts/makedistro.sh; .github/scripts/makedistro.sh"
-          bash -c "cat distro/ubuntu-focal-latest-* > distro/ubuntu-focal-latest.tar.gz"
-          bash -c "ls -l distro; tar ztvf distro/squashed-lowcarb.tar.gz"
-          bash -c "chmod 755 .github/scripts/init.sh; LATEST=${{ env.RELEASE_LATEST }} PUBLISH=true TAG=$RELEASE_VERSION DOCKERFILE=dockerfiles/Dockerfile-core      .github/scripts/init.sh bob-core"
-          bash -c "chmod 755 .github/scripts/init.sh; LATEST=${{ env.RELEASE_LATEST }} PUBLISH=true TAG=$RELEASE_VERSION DOCKERFILE=dockerfiles/Dockerfile-lowcarb .github/scripts/init.sh bob-lowcarb"
-          bash -c "chmod 755 .github/scripts/charts.sh; .github/scripts/charts.sh"
-          bash -c "cp docs/bob-${{ env.RELEASE_VERSION }}.tgz helm/bob-helm-${{ env.RELEASE_VERSION }}.tgz"
-          bash -c "chmod 755 .github/scripts/update_readme.sh; .github/scripts/update_readme.sh"
-          bash -c "chmod 755 .github/scripts/helpdocs.sh; .github/scripts/helpdocs.sh"
-      - name: Cleanup before push
-        run: |
-          bash -c "rm -f distro/ubuntu-focal-latest.tar.gz"
-      - name: Run Snyk to check Docker image for vulnerabilities - bob-core
-        uses: snyk/actions/docker@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          image: bobdotme/bob-core:${{ env.RELEASE_VERSION }}
-          args: --severity-threshold=high --debug
-          command: monitor
-      - name: Run Snyk to check Docker image for vulnerabilities - bob-lowcarb
-        uses: snyk/actions/docker@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          image: bobdotme/bob-lowcarb:${{ env.RELEASE_VERSION }}
-          args: --severity-threshold=high --debug
-          command: monitor
-      #- name: Run Snyk to check Kubernetes manifest file for issues
-      #  uses: snyk/actions/iac@master
-      #  env:
-      #    SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      #  with:
-      #    args: --severity-threshold=high --debug
-      #    file: helm/chart/templates/deployment.yaml
-      #    command: test
+                   bash -c "chmod 755 .github/scripts/update_readme.sh; .github/scripts/update_readme.sh"
+ 
       - name: push
         uses: github-actions-x/commit@v2.6
         with:
@@ -92,7 +42,7 @@ jobs:
           push-branch: 'master'
           commit-message: 'publish'
           force-add: 'true'
-          files: README.md VERSION docs/index.yaml docs/*.tgz docs/commands.md docs/commands/* helm/chart/* distro/*.tar.gz distro/ubuntu-focal-latest-*
+          files: README.md VERSION
           name: rsliotta
           email: bob@bobdot.me
       - name: Release
@@ -106,7 +56,4 @@ jobs:
           ALLOW_TAG_PREFIX: "true"
         with:
           args: |
-            examples/testpv.yaml
-            bob-plugins-${{ env.RELEASE_VERSION }}.tgz
-            plugins/installer.sh
-            helm/bob-helm-${{ env.RELEASE_VERSION }}.tgz
+            distro/*.tgz
