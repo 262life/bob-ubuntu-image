@@ -5,7 +5,7 @@ sudo rm -rf distro/work 2>/dev/null
 sudo mkdir distro/work
 cd distro/work || exit
 
-sudo tar zxf ../ubuntu-focal-latest.tar.gz 
+sudo tar zxf ../ubuntu-focal-latest.tar.gz || exit
 
 #-----  lowcarb  and mini distro
 sudo find usr/bin \( -type f -o -type l \) \( -name "*" ! -name "\["  ! -name "dash" ! -name "ls" ! -name "sleep" ! -name "rsync" ! -name "socat" \) -delete
