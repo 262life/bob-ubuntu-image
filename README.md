@@ -1,4 +1,4 @@
-<img alt="bob" align="left" src="bob.png" width="20%" height="20%">
+<img alt="bob" align="left" src="library-ubuntu-logo.png" width="20%" height="20%">
 
 
 
