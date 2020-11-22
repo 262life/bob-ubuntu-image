@@ -1,3 +1,7 @@
+## [0.99.3] - 2020-11-22
+### Changes
+- Small permission fix
+
 ## [0.99.2] - 2020-11-17
 ### Changes
 - Small permission fix
