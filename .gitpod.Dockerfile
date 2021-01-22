@@ -1,4 +1,4 @@
-FROM workspace-full
+FROM charts.gitpod.io/workspace-full
 
 # Install custom tools, runtime, etc.
 RUN sudo apt install -y shellcheck \
