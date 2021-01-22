@@ -1,4 +1,4 @@
-#FROM registry.gitpod.bobdot.me/workspace-full
+FROM registry.gitpod.bobdot.me/workspace-full
 
 # Install custom tools, runtime, etc.
 RUN sudo apt install -y shellcheck \
