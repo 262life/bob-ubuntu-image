@@ -1,4 +1,4 @@
-FROM registry/workspace-full
+FROM workspace-full
 
 # Install custom tools, runtime, etc.
 RUN sudo apt install -y shellcheck \
