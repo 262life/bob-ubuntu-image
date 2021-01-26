@@ -1,5 +1,5 @@
-#FROM gitpod/workspace-full
-FROM ubuntu
+FROM  gitpod/workspace-full
+
 
 RUN ls
 
