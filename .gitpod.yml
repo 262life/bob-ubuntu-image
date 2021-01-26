@@ -1,6 +1,5 @@
-image: ubuntu
-#image:
-#  file: .gitpod.Dockerfile
+image:
+  file: .gitpod.Dockerfile
 tasks:
   - init: 'set +x; clear'
     command: |
