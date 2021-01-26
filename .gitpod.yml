@@ -1,4 +1,4 @@
-image:
+image: gitpod/workspace-full
   file: gitpod.Dockerfile
 tasks:
   - init: 'set +x; clear'
