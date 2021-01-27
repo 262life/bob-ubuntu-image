@@ -1,7 +1,9 @@
 FROM  gitpod/workspace-full
-
+USER root
 
 RUN ls
+
+USER gitpod
 
 # Install custom tools, runtime, etc.
 #RUN sudo apt install -y shellcheck \
