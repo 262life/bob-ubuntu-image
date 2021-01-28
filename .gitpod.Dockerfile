@@ -1,9 +1,9 @@
 FROM  gitpod/workspace-full
-USER root
 
 
 # Install custom tools, runtime, etc.
-RUN sudo apt install -y shellcheck \
+RUN sudo apt update \
+    && sudo apt install -y shellcheck \
     && curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl \
     && sudo mv kubectl /usr/local/bin/kubectl && sudo chmod 755 /usr/local/bin/kubectl \
     && wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz \
@@ -31,7 +31,7 @@ RUN sudo apt install -y shellcheck \
     && sudo rm -rf /var/lib/apt/lists/* 
 
 # Apply user-specific settings
-# Refresh on 2020-09-18
-USER gitpod
+# Refresh on 2021-01-28
+
 
 
