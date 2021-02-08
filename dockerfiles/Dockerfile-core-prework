@@ -36,7 +36,7 @@ ADD files/entrypoint-core.sh /files/entrypoint.sh
 ADD files/.bashrc /root/.bashrc
 ADD files/info /usr/bin/info
 ADD files/app/cgi/work.cgi /app/cgi/work.cgi
-ADD files/app/docs/index/html /app/docs/index.html
+ADD files/app/docs/index.html /app/docs/index.html
 Add files/app/ws/work.ws /app/ws/work.ws
 ADD /files/wstest.sh /usr/bin/wstest
 ADD files/ganesha.conf /etc/ganesha/ganesha.conf
