@@ -18,7 +18,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' |  debconf-set-selecti
     tar zxf etcd-v${RELEASE}-linux-amd64.tar.gz && \
     cd etcd-v${RELEASE}-linux-amd64 && \
     cp ./etcd* /usr/local/bin/. && \
-    cd ../../ && \.  
+    cd ../../ && \  
     cd /etc/alternatives && mv ./* /usr/bin/. && \
     cd /tmp &&  \
     wget --quiet --no-check-certificate  https://github.com/joewalnes/websocketd/releases/download/v0.4.1/websocketd-0.4.1-linux_amd64.zip && \
