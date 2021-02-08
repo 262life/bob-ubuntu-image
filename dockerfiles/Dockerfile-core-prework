@@ -42,8 +42,7 @@ ADD files/wstest.sh /usr/bin/wstest
 ADD files/ganesha.conf /etc/ganesha/ganesha.conf
 ADD files/rsyncd.conf /etc/rsyncd.conf
 
-RUN sudo chmod 775 files/entrypoint.sh && \
-              root/.bashrc && \
+RUN chmod 775 files/entrypoint.sh && \
               usr/bin/info && \
               usr/bin/wstest.sh && \
               app/cgi/work.cgi && \ 
