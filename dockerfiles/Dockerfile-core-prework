@@ -21,9 +21,12 @@ RUN echo 'debconf debconf/frontend select Noninteractive' |  debconf-set-selecti
     cd ../../ && \  
     cd /etc/alternatives && mv ./* /usr/bin/. && \
     cd /tmp &&  \
+    mkdir websocketd && \
+    cd /tmp/websocketd && \
     wget --quiet --no-check-certificate  https://github.com/joewalnes/websocketd/releases/download/v0.4.1/websocketd-0.4.1-linux_amd64.zip && \
     unzip websocketd-0.4.1-linux_amd64.zip && \
-    mv wesocketd*/websocketd /usr/bin/websocketd && \
+    mv websocketd /usr/bin/websocketd && \
+    rm -rf /tmp/websocketd && \
     chmod 755 /usr/bin/websocketd && \
     rm -rf /tmp/websocketd* && \
     mkdir -p /app/cgi app/docs app/ws && \
