@@ -18,16 +18,34 @@ RUN echo 'debconf debconf/frontend select Noninteractive' |  debconf-set-selecti
     tar zxf etcd-v${RELEASE}-linux-amd64.tar.gz && \
     cd etcd-v${RELEASE}-linux-amd64 && \
     cp ./etcd* /usr/local/bin/. && \
-    cd ../../ && \
+    cd ../../ && \.  
     cd /etc/alternatives && mv ./* /usr/bin/. && \
+    cd /tmp &&  \
+    wget --quiet --no-check-certificate  https://github.com/joewalnes/websocketd/releases/download/v0.4.1/websocketd-0.4.1-linux_amd64.zip && \
+    unzip websocketd-0.4.1-linux_amd64.zip && \
+    mv wesocketd*/websocketd /usr/bin/websocketd && \
+    chmod 755 /usr/bin/websocketd && \
+    rm -rf /tmp/websocketd* && \
+    mkdir -p /app/cgi app/docs app/ws && \
     rm -rf work
 
 ADD files/entrypoint-core.sh /files/entrypoint.sh
 ADD files/.bashrc /root/.bashrc
 ADD files/info /usr/bin/info
+ADD files/app/cgi/work.cgi /app/cgi/work.cgi
+ADD files/app/docs/index/html /app/docs/index.html
+Add files/app/ws/work.ws /app/ws/work.ws
+ADD /files/wstest.sh /usr/bin/wstest
 ADD files/ganesha.conf /etc/ganesha/ganesha.conf
 ADD files/rsyncd.conf /etc/rsyncd.conf
-RUN chmod 775 files/entrypoint.sh root/.bashrc usr/bin/info
+
+RUN chmod 775 files/entrypoint.sh && \
+              root/.bashrc usr/bin/info && \
+              /usr/bin/wstest.sh && \
+              app/cgi/work.cgi && \ 
+              app/ws/work.ws
 
 EXPOSE 8873
+EXPOSE 8080
+
 ENTRYPOINT [ "/files/entrypoint.sh" ]
