@@ -29,7 +29,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' |  debconf-set-selecti
     rm -rf /tmp/websocketd && \
     chmod 755 /usr/bin/websocketd && \
     rm -rf /tmp/websocketd* && \
-    mkdir -p /app/cgi app/docs app/ws && \
+    mkdir -p /app/cgi /app/docs /app/ws && \
     rm -rf work
 
 ADD files/entrypoint-core.sh /files/entrypoint.sh
