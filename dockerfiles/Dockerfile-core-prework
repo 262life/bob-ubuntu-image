@@ -44,7 +44,7 @@ ADD files/rsyncd.conf /etc/rsyncd.conf
 
 RUN chmod 775 files/entrypoint.sh && \
               usr/bin/info && \
-              usr/bin/wstest.sh && \
+              usr/bin/wstest && \
               app/cgi/work.cgi && \ 
               app/ws/work.ws
 
