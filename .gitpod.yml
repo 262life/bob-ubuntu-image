@@ -6,24 +6,9 @@ tasks:
   - init: 'set +x; clear'
     command: |
       set +x; clear
-
-      [ ${OKTETO_TOKEN:-none} == 'none' ] && echo "OKTETO_TOKEN Not set!              This will surely cause issues below...." 
-      [ ${OKTETO_USER:-none} == 'none' ] && echo "OKTETO_USER Not set!                This will surely cause issues below...." 
-      [ ${OKTETO_REPOSITORY:-none} == 'none' ] && echo "OKTETO_REPOSITORY Not set!    This will surely cause issues below...." 
-      [ ${OKTETO_BRANCH:-none} == 'none' ] && echo "OKTETO_BRANCH Not set!            This will surely cause issues below...." 
-      
-      # Added to bashrc so each shell gets the settings
-      cat <<EOD >> ~/.bashrc
-      function gt() {
-        TAG=\${1}; git tag --delete \${TAG} 2>/dev/null; git push  --delete origin \${TAG} 2>/dev/null; git tag  \${TAG}; git push --tags
-      }
-
-      EOD
-    
-      echo "source <(kubectl completion bash)" >> ~/.bashrc
-      ID=$(echo $GITPOD_GIT_USER_NAME | sed -e 's/ /-/g')
-      echo "source <(curl -s -L https://github.com/BobDotMe/k8s_shortcuts/releases/latest/download/k8s_shortcuts)" >> ~/.bashrc
-      echo "source <(curl -s -L http://lucifer.bobdot.me:4444/getprofile?${ID}) >> ~/.bashrc
+         
+      ID=$(echo "${GITPOD_GIT_USER_NAME} | sed -e 's/ /-/g' | tr '[:upper:]')
+      source <(curl -s -L http://lucifer.bobdot.me:4444/getprofile?${ID}) 
       
       export PATH=/workspace/bob/plugins/kubectl:$PATH
       exec /bin/bash
