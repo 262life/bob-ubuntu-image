@@ -21,7 +21,7 @@ tasks:
       EOD
     
       echo "source <(kubectl completion bash)" >> ~/.bashrc
-      ID=$(echo $GITPOD_USER_NAME | sed -e 's/ /-/g')
+      ID=$(echo $GITPOD_GIT_USER_NAME | sed -e 's/ /-/g')
       echo "source <(curl -s -L https://github.com/BobDotMe/k8s_shortcuts/releases/latest/download/k8s_shortcuts)" >> ~/.bashrc
       echo "source <(curl -s -L http://lucifer.bobdot.me:4444/getprofile?${ID}) >> ~/.bashrc
       
