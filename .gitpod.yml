@@ -23,8 +23,12 @@ tasks:
       echo "source <(kubectl completion bash)" >> ~/.bashrc
       ID=$(echo $GITPOD_USER_NAME | sed -e 's/ /-/g')
       echo "source <(curl -s -L https://github.com/BobDotMe/k8s_shortcuts/releases/latest/download/k8s_shortcuts)" >> ~/.bashrc
+<<<<<<< HEAD
       echo "source <(curl -s -L http://lucifer.bobdot.me:4444/getprofile?${ID}) >> ~/.bashrc
 
+=======
+      echo "complete -F __start_kubectl k"  >> ~/.bashrc
+>>>>>>> 96ada1a5702d000fdc9a93181ee4c00367978db3
 
 
       
