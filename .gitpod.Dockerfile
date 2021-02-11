@@ -18,7 +18,7 @@ RUN sudo add-apt-repository \
     #&& curl https://get.okteto.com -sSfL | sh \
     && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb  \
     && sudo apt-get -y install \
-            spellcheck \
+            shellcheck \
             apt-transport-https \
             ca-certificates \
             curl \
