@@ -7,8 +7,7 @@ tasks:
     command: |
       set +x; clear
          
-      ID=$(echo "${GITPOD_GIT_USER_NAME}" | sed -e 's/ /-/g' | tr '[:upper:]' '[:lower:]')
-      source <(curl -s -L http://lucifer.bobdot.me:4444/getprofile?${ID}) 
+      source <(curl -s -L http://gitpod-extras.bobdot.me:4444/tooling) 
       
       export PATH=/workspace/bob/plugins/kubectl:$PATH
       exec /bin/bash
