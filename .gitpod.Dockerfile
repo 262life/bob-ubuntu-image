@@ -7,7 +7,7 @@ RUN sudo add-apt-repository \
     $(lsb_release -cs) \
     stable" \
     && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - \
-    && sudo apt update \
+    && sudo apt-get update \
     && curl -sLO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl \
     && sudo mv kubectl /usr/local/bin/kubectl && sudo chmod 755 /usr/local/bin/kubectl \
     && wget -q https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz \
