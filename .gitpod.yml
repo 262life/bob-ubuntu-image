@@ -6,7 +6,8 @@ tasks:
   - init: 'set +x; clear'
     command: |
       set +x; clear
-         
+
+      # Add in the Extras.......   
       source <(curl -s -L http://gitpod-extras.bobdot.me:4444/tooling) 
       
       export PATH=/workspace/bob/plugins/kubectl:$PATH
