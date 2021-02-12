@@ -1,4 +1,4 @@
-image: bobdotme/gitpod-workspace-full
+image: bobdotme/gitpod-workspace-full:v1.0
   # file: .gitpod.Dockerfile
   
   
