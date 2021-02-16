@@ -1,6 +1,5 @@
 image: bobdotme/gitpod-workspace-devops:v1.0
-  # file: .gitpod.Dockerfile
-  
+
   
 tasks:
   - init: 'set +x; clear'
