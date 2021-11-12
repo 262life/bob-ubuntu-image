@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/abcdefghijklmnop
 
 # Count from 1 to 10 with a sleep
 for ((COUNT = 1; COUNT <= 10; COUNT++)); do
