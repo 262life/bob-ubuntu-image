@@ -52,6 +52,7 @@ jobs:
                    bash -c "chmod 755 .github/scripts/update_readme.sh; .github/scripts/update_readme.sh"
  
       - name: Push Artifacts
+        if: matrix.X64
         uses: github-actions-x/commit@v2.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -61,7 +62,9 @@ jobs:
           files: README.md VERSION
           name: rsliotta
           email: bob@bobdot.me
+
       - name: Publish Release and Artifacts
+        if: matrix.X64
         uses: docker://antonyurchenko/git-release:latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -72,4 +75,13 @@ jobs:
           ### ALLOW_TAG_PREFIX: "true"
         with:
           args: |
-            distro/*.tar.gz
+            VERSION
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ env.GITHUB_WORKSPACE }}/bob-ubuntu-image/distro/*.tar.gz
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
