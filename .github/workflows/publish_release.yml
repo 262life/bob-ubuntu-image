@@ -16,6 +16,14 @@ jobs:
   #release:
   #  runs-on: ubuntu-20.04
     steps:
+
+      - name: Cleanup Runner Workspace...
+        if: always()
+        run: |
+          echo "Cleaning up previous run"
+          bash -c "env"
+          sudo bash -c "rm -rf $GITHUB_WORKSPACE"
+
       - name: Checkout
         uses: actions/checkout@v1
       - run: |
