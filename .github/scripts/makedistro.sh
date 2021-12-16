@@ -1,11 +1,12 @@
 #!/bin/sh 
 
+ARCH=$(uname -m)
 
 sudo rm -rf distro/work 2>/dev/null
 sudo mkdir distro/work
 cd distro/work || exit
 
-sudo tar zxf ../ubuntu-focal-latest.tar.gz || exit
+sudo tar zxf ../ubuntu-focal-${ARCH}-latest.tar.gz || exit
 
 #-----  lowcarb  and mini distro
 sudo find usr/bin \( -type f -o -type l \) \( -name "*" ! -name "\["  ! -name "dash" ! -name "ls" ! -name "sleep" ! -name "rsync" ! -name "socat" \) -delete
@@ -55,7 +56,7 @@ sudo rm -rf  var/lib/dpkg var/log/dpkg*
 sudo find var/log -type f -delete
 
 
-sudo tar --exclude var -zcvf ../squashed-lowcarb.tar.gz ./*
+sudo tar --exclude var -zcvf ../squashed-lowcarb-${ARCH}.tar.gz ./*
 
 ##-----
 

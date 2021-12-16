@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ARCH=$(uname -m)
+
 docker pull ubuntu:focal
 
 mkdir -p distro/pre-work
@@ -15,7 +17,7 @@ mkdir -p distro/pre-work/extract
 sudo .github/scripts/extract_image.py distro/pre-work/latest-focal.tar distro/pre-work/extract
 cd distro/pre-work/extract || exit
 sudo rm -rf work
-sudo tar zcf ../../ubuntu-focal-latest.tar.gz ./*
+sudo tar zcf ../../ubuntu-focal-${ARCH}-latest.tar.gz ./*
 cd ../../..
 sudo rm -rf distro/pre-work
 
