@@ -1,6 +1,6 @@
 ## [0.9.15-RC1 ] - 2021-12-15
 ### Add
-- websocketd testing tool
+- Porting to ARM
 
 ## [0.9.14] - 2021-11-11
 ### Add
