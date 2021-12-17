@@ -1,3 +1,8 @@
+## [0.9.15] - 2021-12-16
+### Add
+- Porting to ARM
+- Latest
+
 ## [0.9.15-rc1] - 2021-12-15
 ### Add
 - Porting to ARM
