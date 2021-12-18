@@ -1,6 +1,6 @@
 #!/bin/sh 
 
-ARCH=$(uname -m)
+ARCH=$(dpkg --print-architecture)
 
 sudo rm -rf distro/work 2>/dev/null
 sudo mkdir distro/work

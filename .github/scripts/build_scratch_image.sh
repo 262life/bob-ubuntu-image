@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ARCH=$(uname -m)
+ARCH=$(dpkg --print-architecture)
 
 docker pull ubuntu:focal
 
